@@ -11,17 +11,20 @@
   --primary-color: hsl(var(--base-color), 100%, 63%);
   --base-color: 194;
 }
-
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: "Roboto", sans-serif;
   display: grid;
+  min-height: 100vh;
+}
+.container {
+  justify-self: center;
+  align-self: end;
 }
 .hide {
   display: none;
 }
-
 button {
   border: none;
   background-color: transparent;
@@ -33,6 +36,7 @@ button svg {
 #timer {
   display: flex;
   font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
+  margin-bottom: 1.6rem;
 }
 #controls {
   background-color: var(--bg-primary-light);
@@ -43,4 +47,9 @@ button svg {
   gap: 3.2rem;
   width: clamp(10rem, 10rem + 30vw, 22.8rem);
   height: clamp(8rem, 5rem + 10vw, 10.8rem);
+}
+footer {
+  justify-self: end;
+  align-self: end;
+  padding: 0 4rem 3.2rem 0;
 }
