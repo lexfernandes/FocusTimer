@@ -11,11 +11,22 @@ let soundON = document.querySelector(".sound-on")
 let soundOff = document.querySelector(".sound-off")
 //----------------------------------------------------------------------------------------------//
 
+function countDown() {
+  setTimeout(function () {
+    let seconds = Number(secondsDisplay.textContent)
+    if (seconds <= 0) {
+      seconds = 60
+    }
+    secondsDisplay.textContent = seconds - 1
+    countDown()
+  }, 1000)
+}
 play.addEventListener("click", function () {
   play.classList.add("hide")
   pause.classList.remove("hide")
   set.classList.add("hide")
   stop.classList.remove("hide")
+  countDown()
 })
 pause.addEventListener("click", function () {
   play.classList.remove("hide")
