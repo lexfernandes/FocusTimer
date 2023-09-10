@@ -1,5 +1,6 @@
-let hours = document.querySelector(".hours")
-let minutes = document.querySelector(".minutes")
+const minutesDisplay = document.querySelector(".minutes")
+let secondsDisplay = document.querySelector(".seconds")
+let minutes
 
 const play = document.querySelector(".play")
 const set = document.querySelector(".set")
@@ -28,8 +29,10 @@ stop.addEventListener("click", function () {
 })
 
 set.addEventListener("click", function () {
-  hours = prompt("Digite a Hora")
-  minutes = prompt("Digite os Minutos")
+  minutes = prompt("Digite a Hora")
+  seconds = prompt("Digite o Segundos")
+  minutesDisplay.textContent = minutes
+  secondsDisplay.textContent = seconds
 })
 
 soundON.addEventListener("click", function () {
