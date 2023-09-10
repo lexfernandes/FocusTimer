@@ -13,17 +13,23 @@ let soundOff = document.querySelector(".sound-off")
 play.addEventListener("click", function () {
   play.classList.add("hide")
   pause.classList.remove("hide")
+  set.classList.add("hide")
+  stop.classList.remove("hide")
 })
 pause.addEventListener("click", function () {
   play.classList.remove("hide")
   pause.classList.add("hide")
 })
+stop.addEventListener("click", function () {
+  set.classList.remove("hide")
+  stop.classList.add("hide")
+  pause.classList.add("hide")
+  play.classList.remove("hide")
+})
 
 set.addEventListener("click", function () {
   hours = prompt("Digite a Hora")
   minutes = prompt("Digite os Minutos")
-
-  
 })
 
 soundON.addEventListener("click", function () {
