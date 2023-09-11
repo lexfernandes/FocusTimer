@@ -1,5 +1,5 @@
-import { resetControls } from "./controls.js"
-import { Timer } from "./timer.js"
+import Controls from "./controls.js"
+import Timer from "./timer.js"
 
 //-------------------VARIAVEIS--------------------------//
 let secondsDisplay = document.querySelector(".seconds")
@@ -7,48 +7,51 @@ const minutesDisplay = document.querySelector(".minutes")
 let minutes = Number(minutesDisplay.textContent)
 let TimerTimeOut
 
-const play = document.querySelector(".play")
-const set = document.querySelector(".set")
-const pause = document.querySelector(".pause")
-const stop = document.querySelector(".stop")
+const buttonPlay = document.querySelector(".play")
+const buttonSet = document.querySelector(".set")
+const buttonPause = document.querySelector(".pause")
+const buttonStop = document.querySelector(".stop")
 
 let soundON = document.querySelector(".sound-on")
 let soundOff = document.querySelector(".sound-off")
 //--------------------------EVENTOS------------------------------------------//
+const controls = Controls({
+  buttonPlay,
+  buttonPause,
+  buttonSet,
+  buttonStop,
+})
+
 const timer = Timer({
   minutesDisplay,
   secondsDisplay,
   TimerTimeOut,
-  resetControls,
+  resetControls: controls.reset,
 })
 
 play.addEventListener("click", function () {
-  play.classList.add("hide")
-  pause.classList.remove("hide")
-  set.classList.add("hide")
-  stop.classList.remove("hide")
+  controls.play()
   timer.countDown()
 })
 
 pause.addEventListener("click", function () {
-  pause.classList.add("hide")
-  play.classList.remove("hide")
+  controls.pause()
   clearTimeout(TimerTimeOut)
 })
 
 stop.addEventListener("click", function () {
-  timer.resetControls()
-  timer.resetTimer()
+  controls.reset()
+  timer.reset()
 })
 
 set.addEventListener("click", function () {
-  let newMinutes = prompt("Digite os minutos")
+  let newMinutes = controls.getMinutes()
   if (!newMinutes) {
     timer.resetTimer()
     return
   }
   minutes = newMinutes
-  updateTimerDisplay(minutes, 0)
+  timer.updateDisplay(minutes, 0)
 })
 
 //----------------------------------------------------------------------------------------------//
