@@ -5,7 +5,6 @@ import Timer from "./timer.js"
 let secondsDisplay = document.querySelector(".seconds")
 const minutesDisplay = document.querySelector(".minutes")
 let minutes = Number(minutesDisplay.textContent)
-let TimerTimeOut
 
 const buttonPlay = document.querySelector(".play")
 const buttonSet = document.querySelector(".set")
@@ -25,33 +24,34 @@ const controls = Controls({
 const timer = Timer({
   minutesDisplay,
   secondsDisplay,
-  TimerTimeOut,
   resetControls: controls.reset,
+  minutes,
 })
 
-play.addEventListener("click", function () {
+buttonPlay.addEventListener("click", function () {
   controls.play()
   timer.countDown()
 })
 
-pause.addEventListener("click", function () {
+buttonPause.addEventListener("click", function () {
   controls.pause()
-  clearTimeout(TimerTimeOut)
+  timer.hold()
 })
 
-stop.addEventListener("click", function () {
+buttonStop.addEventListener("click", function () {
   controls.reset()
   timer.reset()
 })
 
-set.addEventListener("click", function () {
+buttonSet.addEventListener("click", function () {
   let newMinutes = controls.getMinutes()
   if (!newMinutes) {
-    timer.resetTimer()
+    timer.reset()
     return
   }
   minutes = newMinutes
   timer.updateDisplay(minutes, 0)
+  timer.updateMinutes(minutes)
 })
 
 //----------------------------------------------------------------------------------------------//
