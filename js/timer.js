@@ -12,7 +12,7 @@ export function Timer({
 
   function resetTimer() {
     updateTimerDisplay(minutes, 0)
-    clearTimeout(lTimerTimeOut)
+    clearTimeout(TimerTimeOut)
   }
 
   function countDown() {

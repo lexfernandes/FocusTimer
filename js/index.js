@@ -50,7 +50,6 @@ set.addEventListener("click", function () {
   minutes = newMinutes
   updateTimerDisplay(minutes, 0)
 })
-//--------------------------------------FUNÇÕES-----------------------------------------------//
 
 //----------------------------------------------------------------------------------------------//
 soundON.addEventListener("click", function () {
