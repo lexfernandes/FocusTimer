@@ -73,7 +73,6 @@ function countDown() {
       seconds = 60
       --minutes
     }
-
     updateTimerDisplay(minutes, String(seconds - 1))
     countDown()
   }, 1000)
